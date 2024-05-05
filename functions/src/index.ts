@@ -2,7 +2,10 @@ import * as functions from "firebase-functions";
 import * as express from "express";
 import * as cors from "cors";
 import * as bodyparser from "body-parser";
-import { getAllExpenses } from "./controller/expenseRequestController";
+import {
+  getAllExpenses,
+  getExpenseDetails,
+} from "./controller/expenseRequestController";
 import { login } from "./controller/authRequestController";
 
 const app = express();
@@ -16,5 +19,6 @@ app.get("/", (req, resp) => {
 
 app.post("/login", login);
 app.get("/getAllExpenses", getAllExpenses);
+app.get("/getExpenseDetails", getExpenseDetails);
 
 exports.app = functions.https.onRequest(app);
